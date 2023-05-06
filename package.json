@@ -9,6 +9,8 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "effector": "22.8.3",
+    "effector-react": "22.5.1",
     "react": "18.2.0",
     "react-native": "0.71.7"
   },
