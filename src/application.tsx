@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { MainScreen } from '@app/screens/main-screen'
 import { SplashScreen } from '@app/screens/splash-screen'
 import { NavigationContainer } from '@react-navigation/native'
 import {
@@ -19,6 +20,12 @@ export const Application: FC = () => {
         <Stack.Screen
           component={SplashScreen}
           name={SplashScreen.path}
+          options={DEFAULT_SCREEN_OPTIONS}
+        />
+
+        <Stack.Screen
+          component={MainScreen}
+          name={MainScreen.path}
           options={DEFAULT_SCREEN_OPTIONS}
         />
       </Stack.Navigator>
