@@ -1,4 +1,4 @@
-const {builtinModules} = require('module');
+const { builtinModules } = require('module')
 
 module.exports = {
   arrowParens: 'always',
@@ -12,8 +12,9 @@ module.exports = {
     `^(${builtinModules.join('|')})$`,
     '<THIRD_PARTY_MODULES>',
     '^@',
+    '^[.\\/](.(?!\\.css$))*$',
   ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
-};
+}
