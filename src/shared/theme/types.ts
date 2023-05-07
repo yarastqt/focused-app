@@ -4,9 +4,25 @@ export type ColorSchemeValue = 'light' | 'dark'
 export type Theme = {
   colorScheme: ColorSchemeValue
 
-  color: {}
+  color: {
+    brandBgBase: string
+    brandBgPressed: string
+    brandTextOn: string
 
-  font: {}
+    lineNormal: string
+
+    surface0: string
+
+    textPrimary: string
+    textSecondary: string
+  }
+
+  typography: {
+    textL: {
+      fontFamily: string
+      fontSize: number
+    }
+  }
 
   shadow: {}
 }
