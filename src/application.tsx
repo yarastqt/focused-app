@@ -1,15 +1,27 @@
 import { FC } from 'react'
-import { SafeAreaView, StatusBar } from 'react-native'
 
-import { useTheme } from '@app/shared/theme'
+import { SplashScreen } from '@app/screens/splash-screen'
+import { NavigationContainer } from '@react-navigation/native'
+import {
+  NativeStackNavigationOptions,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack'
+
+const Stack = createNativeStackNavigator()
+const DEFAULT_SCREEN_OPTIONS: NativeStackNavigationOptions = {
+  headerShown: false,
+}
 
 export const Application: FC = () => {
-  const { colorScheme } = useTheme()
-  const isDarkColorScheme = colorScheme === 'dark'
-
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={isDarkColorScheme ? 'light-content' : 'dark-content'} />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={SplashScreen.path}>
+        <Stack.Screen
+          component={SplashScreen}
+          name={SplashScreen.path}
+          options={DEFAULT_SCREEN_OPTIONS}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
