@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 import { View } from 'react-native'
 import Animated, {
+  runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
@@ -9,11 +10,16 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { MainLayout } from '@app/shared/layouts/main-layout'
+import { paths } from '@app/shared/paths'
 import { createStyles } from '@app/shared/theme'
+import { useNavigation } from '@react-navigation/native'
 
 import { Logo } from './ui/logo'
 
-const _SplashScreen: FC = () => {
+export const SplashScreen: FC = () => {
+  // TODO: Fix any type.
+  const navigation = useNavigation<any>()
+
   const styles = useStyles()
 
   const opacity = useSharedValue(1)
@@ -25,11 +31,20 @@ const _SplashScreen: FC = () => {
     transform: [{ scale: scale.value }, { rotate: `${rotate.value}deg` }],
   }))
 
+  const navigateToMainScreen = () => {
+    navigation.navigate(paths.main)
+  }
+
   useEffect(() => {
     scale.value = withSpring(1, {}, () => {
       rotate.value = withSpring(360, {}, () => {})
       scale.value = withDelay(500, withSequence(withSpring(0.5), withSpring(20)))
-      opacity.value = withDelay(1250, withSpring(0))
+      opacity.value = withDelay(
+        1250,
+        withSpring(0, {}, () => {
+          runOnJS(navigateToMainScreen)()
+        }),
+      )
     })
   }, [])
 
@@ -51,7 +66,3 @@ const useStyles = createStyles(() => ({
     justifyContent: 'center',
   },
 }))
-
-export const SplashScreen = Object.assign(_SplashScreen, {
-  path: 'splash',
-})
