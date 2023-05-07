@@ -7,6 +7,7 @@ import { createStyles } from '@app/shared/theme'
 import { ActionButton } from '@app/shared/ui-kit'
 
 import { Header } from './ui/header'
+import { Preview } from './ui/preview'
 
 export const MainScreen: FC = () => {
   const styles = useStyles()
@@ -15,6 +16,7 @@ export const MainScreen: FC = () => {
     <MainLayout>
       <View style={styles.root}>
         <Header />
+        <Preview />
 
         <Animated.View entering={FadeInDown.springify()}>
           <ActionButton>Start</ActionButton>

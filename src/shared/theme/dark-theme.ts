@@ -4,16 +4,16 @@ export const darkTheme: Theme = {
   colorScheme: 'dark',
 
   color: {
-    brandBgBase: 'rgba(20, 20, 25, 1)',
-    brandBgPressed: 'rgba(20, 20, 25, 0.9)',
-    brandTextOn: 'rgba(255, 253, 250, 1)',
+    brandBgBase: 'rgba(255, 253, 250, 1)',
+    brandBgPressed: 'rgba(255, 253, 250, 0.9)',
+    brandTextOn: 'rgba(20, 20, 25, 1)',
 
     lineNormal: 'rgba(193, 199, 200, 1)',
 
-    surface0: 'rgba(255, 253, 250, 1)',
+    surface0: 'rgba(20, 20, 25, 1)',
 
-    textPrimary: 'rgba(20, 20, 25, 1)',
-    textSecondary: 'rgba(58, 52, 28, 0.5)',
+    textPrimary: 'rgba(255, 253, 250, 1)',
+    textSecondary: 'rgba(255, 253, 250, 0.5)',
   },
 
   typography: {
