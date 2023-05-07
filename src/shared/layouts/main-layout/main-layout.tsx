@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { SafeAreaView, StatusBar } from 'react-native'
+import { SafeAreaView, StatusBar, View } from 'react-native'
 
 import { createStyles, useTheme } from '@app/shared/theme'
 
@@ -16,13 +16,21 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'} />
-      {children}
+
+      <View style={styles.content}>{children}</View>
     </SafeAreaView>
   )
 }
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   root: {
     flex: 1,
+    backgroundColor: theme.color.surface0,
+  },
+
+  content: {
+    flex: 1,
+    padding: 24,
+    paddingTop: 0,
   },
 }))
