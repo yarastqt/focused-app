@@ -31,6 +31,5 @@ const useStyles = createStyles((theme) => ({
   content: {
     flex: 1,
     padding: 24,
-    paddingTop: 0,
   },
 }))
