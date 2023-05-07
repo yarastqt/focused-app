@@ -1,10 +1,12 @@
 import { FC } from 'react'
-import { Text, View } from 'react-native'
-import Animated, { SlideInDown, SlideInUp } from 'react-native-reanimated'
+import { View } from 'react-native'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 
 import { MainLayout } from '@app/shared/layouts/main-layout'
 import { createStyles } from '@app/shared/theme'
 import { ActionButton } from '@app/shared/ui-kit'
+
+import { Header } from './ui/header'
 
 export const MainScreen: FC = () => {
   const styles = useStyles()
@@ -12,12 +14,10 @@ export const MainScreen: FC = () => {
   return (
     <MainLayout>
       <View style={styles.root}>
-        <Animated.View entering={SlideInUp.springify()}>
-          <Text style={{ height: 80 }}>Main screen</Text>
-        </Animated.View>
+        <Header />
 
-        <Animated.View entering={SlideInDown.springify()}>
-          <ActionButton>Button</ActionButton>
+        <Animated.View entering={FadeInDown.springify()}>
+          <ActionButton>Start</ActionButton>
         </Animated.View>
       </View>
     </MainLayout>
