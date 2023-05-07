@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import { MainScreen } from '@app/screens/main-screen'
 import { SplashScreen } from '@app/screens/splash-screen'
+import { paths } from '@app/shared/paths'
 import { NavigationContainer } from '@react-navigation/native'
 import {
   NativeStackNavigationOptions,
@@ -16,17 +17,17 @@ const DEFAULT_SCREEN_OPTIONS: NativeStackNavigationOptions = {
 export const Application: FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={SplashScreen.path}>
+      <Stack.Navigator initialRouteName={paths.splash}>
         <Stack.Screen
           component={SplashScreen}
-          name={SplashScreen.path}
+          name={paths.splash}
           options={DEFAULT_SCREEN_OPTIONS}
         />
 
         <Stack.Screen
           component={MainScreen}
-          name={MainScreen.path}
-          options={DEFAULT_SCREEN_OPTIONS}
+          name={paths.main}
+          options={{ ...DEFAULT_SCREEN_OPTIONS, animation: 'none' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

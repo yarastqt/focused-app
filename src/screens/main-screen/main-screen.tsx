@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 import { MainLayout } from '@app/shared/layouts/main-layout'
 import { createStyles } from '@app/shared/theme'
 
-const _MainScreen: FC = () => {
+export const MainScreen: FC = () => {
   const styles = useStyles()
 
   return (
@@ -21,7 +21,3 @@ const useStyles = createStyles(() => ({
     flex: 1,
   },
 }))
-
-export const MainScreen = Object.assign(_MainScreen, {
-  path: 'main',
-})
