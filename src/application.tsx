@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { MainScreen } from '@app/screens/main-screen'
 import { SettingsScreen } from '@app/screens/settings-screen'
 import { SplashScreen } from '@app/screens/splash-screen'
+import { StatisticsScreen } from '@app/screens/statistics-screen'
 import { RootStackParamList, Route } from '@app/shared/navigation'
 import { NavigationContainer } from '@react-navigation/native'
 import {
@@ -34,6 +35,12 @@ export const Application: FC = () => {
         <RootStack.Screen
           component={SettingsScreen}
           name={Route.settings}
+          options={DEFAULT_SCREEN_OPTIONS}
+        />
+
+        <RootStack.Screen
+          component={StatisticsScreen}
+          name={Route.statistics}
           options={DEFAULT_SCREEN_OPTIONS}
         />
       </RootStack.Navigator>
