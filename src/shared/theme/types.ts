@@ -1,3 +1,5 @@
+import type { ShadowStyleIOS } from 'react-native'
+
 export type ColorSchemeVariant = 'light' | 'dark' | 'system'
 export type ColorSchemeValue = 'light' | 'dark'
 
@@ -12,6 +14,7 @@ export type Theme = {
     lineNormal: string
 
     surface0: string
+    surfaceSubmerged: string
 
     textPrimary: string
     textSecondary: string
@@ -22,7 +25,13 @@ export type Theme = {
       fontFamily: string
       fontSize: number
     }
+    textM: {
+      fontFamily: string
+      fontSize: number
+    }
   }
 
-  shadow: {}
+  shadow: {
+    elevated50: ShadowStyleIOS
+  }
 }
