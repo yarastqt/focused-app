@@ -33,16 +33,14 @@ export const ActionButton: FC<ActionButtonProps> = (props) => {
     backgroundColor.value = withSpring(0)
   }, [])
 
-  const rootStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: scale.value }],
-      backgroundColor: interpolateColor(
-        backgroundColor.value,
-        [0, 1],
-        [theme.color.brandBgBase, theme.color.brandBgPressed],
-      ),
-    }
-  })
+  const rootStyles = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+    backgroundColor: interpolateColor(
+      backgroundColor.value,
+      [0, 1],
+      [theme.color.brandBgBase, theme.color.brandBgPressed],
+    ),
+  }))
 
   return (
     <Pressable onPress={onPress} onPressIn={onPressIn} onPressOut={onPressOut}>
