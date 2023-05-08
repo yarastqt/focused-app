@@ -2,12 +2,14 @@ import { View } from 'react-native'
 import Animated, { FadeInUp } from 'react-native-reanimated'
 
 import { Cup, Settings } from '@app/shared/icons'
+import { Route, useNavigation } from '@app/shared/navigation'
 import { createStyles } from '@app/shared/theme'
 import { IconButton } from '@app/shared/ui-kit'
 
 import { Logo } from './logo'
 
 export const Header = () => {
+  const navigation = useNavigation()
   const styles = useStyles()
 
   return (
@@ -19,7 +21,7 @@ export const Header = () => {
           <Cup />
         </IconButton>
 
-        <IconButton onPress={() => null}>
+        <IconButton onPress={() => navigation.navigate(Route.settings)}>
           <Settings />
         </IconButton>
       </View>
