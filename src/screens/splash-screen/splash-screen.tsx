@@ -10,15 +10,13 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { MainLayout } from '@app/shared/layouts/main-layout'
-import { paths } from '@app/shared/paths'
+import { Route, useNavigation } from '@app/shared/navigation'
 import { createStyles } from '@app/shared/theme'
-import { useNavigation } from '@react-navigation/native'
 
 import { Logo } from './ui/logo'
 
 export const SplashScreen: FC = () => {
-  // TODO: Fix any type.
-  const navigation = useNavigation<any>()
+  const navigation = useNavigation()
 
   const styles = useStyles()
 
@@ -32,7 +30,7 @@ export const SplashScreen: FC = () => {
   }))
 
   const navigateToMainScreen = () => {
-    navigation.navigate(paths.main)
+    navigation.navigate(Route.main)
   }
 
   useEffect(() => {

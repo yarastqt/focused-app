@@ -1,15 +1,16 @@
 import { FC } from 'react'
 
 import { MainScreen } from '@app/screens/main-screen'
+import { SettingsScreen } from '@app/screens/settings-screen'
 import { SplashScreen } from '@app/screens/splash-screen'
-import { paths } from '@app/shared/paths'
+import { RootStackParamList, Route } from '@app/shared/navigation'
 import { NavigationContainer } from '@react-navigation/native'
 import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack'
 
-const Stack = createNativeStackNavigator()
+const RootStack = createNativeStackNavigator<RootStackParamList>()
 const DEFAULT_SCREEN_OPTIONS: NativeStackNavigationOptions = {
   headerShown: false,
 }
@@ -17,19 +18,25 @@ const DEFAULT_SCREEN_OPTIONS: NativeStackNavigationOptions = {
 export const Application: FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={paths.splash}>
-        <Stack.Screen
+      <RootStack.Navigator initialRouteName={Route.splash}>
+        <RootStack.Screen
           component={SplashScreen}
-          name={paths.splash}
+          name={Route.splash}
           options={DEFAULT_SCREEN_OPTIONS}
         />
 
-        <Stack.Screen
+        <RootStack.Screen
           component={MainScreen}
-          name={paths.main}
+          name={Route.main}
           options={{ ...DEFAULT_SCREEN_OPTIONS, animation: 'none' }}
         />
-      </Stack.Navigator>
+
+        <RootStack.Screen
+          component={SettingsScreen}
+          name={Route.settings}
+          options={DEFAULT_SCREEN_OPTIONS}
+        />
+      </RootStack.Navigator>
     </NavigationContainer>
   )
 }
