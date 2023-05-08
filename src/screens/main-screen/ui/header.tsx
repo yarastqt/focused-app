@@ -17,7 +17,7 @@ export const Header = () => {
       <Logo />
 
       <View style={styles.actions}>
-        <IconButton onPress={() => null}>
+        <IconButton onPress={() => navigation.navigate(Route.statistics)}>
           <Cup />
         </IconButton>
 
