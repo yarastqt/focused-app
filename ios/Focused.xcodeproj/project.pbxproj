@@ -15,7 +15,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		64404F17858E48B9AAE68BF1 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA9CCB9D3CB44B4A246FD8B /* Rubik-Regular.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Focused-FocusedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Focused-FocusedTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D2728D4855A3455F80D7105D /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7D9854B03B9441CA0B22C56 /* Rubik-Light.ttf */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		5709B34CF0A7D63546082F79 /* Pods-Focused.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Focused.release.xcconfig"; path = "Target Support Files/Pods-Focused/Pods-Focused.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Focused-FocusedTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Focused-FocusedTests.debug.xcconfig"; path = "Target Support Files/Pods-Focused-FocusedTests/Pods-Focused-FocusedTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Focused.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Focused.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Focused/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Focused-FocusedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Focused-FocusedTests.release.xcconfig"; path = "Target Support Files/Pods-Focused-FocusedTests/Pods-Focused-FocusedTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDA9CCB9D3CB44B4A246FD8B /* Rubik-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Regular.ttf"; path = "../assets/fonts/Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		E56978211D3745E5BEB46BAE /* Rubik-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Medium.ttf"; path = "../assets/fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = Focused;
@@ -259,7 +256,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D2728D4855A3455F80D7105D /* Rubik-Light.ttf in Resources */,
 				07A9B8715484441AA634264D /* Rubik-Medium.ttf in Resources */,
