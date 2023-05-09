@@ -1,24 +1,17 @@
-import { attach, createEffect, createEvent, restore, sample } from 'effector'
+import { attach, createEffect, createEvent, createStore, restore, sample } from 'effector'
 import { persist } from 'effector-storage/rn/async'
 import { Appearance, NativeEventSubscription } from 'react-native'
 
-import type { ColorSchemeVariant } from './types'
+import { ColorSchemeValue, ColorSchemeVariant } from './types'
 
 export const $$theme = (() => {
-  const colorSchemeChanged = createEvent<ColorSchemeVariant>()
+  const colorSchemeVariantChanged = createEvent<ColorSchemeVariant>()
+  const colorSchemeChanged = createEvent<ColorSchemeValue>()
+
   const appearanceListenerSetted = createEvent<NativeEventSubscription>()
 
-  const $colorSchemeVariant = restore(colorSchemeChanged, 'light')
-  const $colorScheme = $colorSchemeVariant.map((colorSchemeVariant) => {
-    switch (colorSchemeVariant) {
-      case 'dark':
-        return 'dark'
-      case 'light':
-        return 'light'
-      default:
-        return Appearance.getColorScheme() ?? 'light'
-    }
-  })
+  const $colorSchemeVariant = restore(colorSchemeVariantChanged, 'light')
+  const $colorScheme = restore(colorSchemeChanged, 'light')
 
   const $appearanceListener = restore(appearanceListenerSetted, null)
 
@@ -42,20 +35,35 @@ export const $$theme = (() => {
   persist({ store: $colorSchemeVariant, key: 'colorSchemeVariant' })
 
   sample({
-    clock: colorSchemeChanged,
+    clock: $colorSchemeVariant,
     filter: (variant) => variant === 'system',
     target: watchColorSchemeFx,
   })
 
   sample({
-    clock: colorSchemeChanged,
+    clock: $colorSchemeVariant,
     filter: (variant) => variant !== 'system',
     target: unwatchColorSchemeFx,
+  })
+
+  sample({
+    clock: $colorSchemeVariant,
+    fn: (colorSchemeVariant) => {
+      switch (colorSchemeVariant) {
+        case 'dark':
+          return 'dark'
+        case 'light':
+          return 'light'
+        default:
+          return Appearance.getColorScheme() ?? 'light'
+      }
+    },
+    target: $colorScheme,
   })
 
   return {
     $colorScheme,
     $colorSchemeVariant,
-    colorSchemeChanged,
+    colorSchemeChanged: colorSchemeVariantChanged,
   }
 })()
