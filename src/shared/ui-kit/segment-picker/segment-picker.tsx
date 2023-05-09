@@ -16,13 +16,13 @@ import { createStyles } from '@app/shared/theme'
 import { SegmentPickerContext } from './context'
 import { Option } from './option'
 
-export interface SegmentPickerProps {
+export interface SegmentPickerProps<T> {
   children: ReactNode
-  onChange: (value: string) => void
-  value: string
+  onChange: (value: T) => void
+  value: T
 }
 
-const _SegmentPicker: FC<SegmentPickerProps> = (props) => {
+function _SegmentPicker<T>(props: SegmentPickerProps<T>) {
   const { children, onChange, value } = props
 
   const styles = useStyles()

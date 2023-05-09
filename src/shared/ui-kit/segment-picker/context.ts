@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react'
 
-export interface SegmentPickerContextProps {
-  onChange: (value: string) => void
-  value: string
+export interface SegmentPickerContextProps<T = any> {
+  onChange: (value: T) => void
+  value: T
 }
 
 export const SegmentPickerContext = createContext<SegmentPickerContextProps | null>(null)

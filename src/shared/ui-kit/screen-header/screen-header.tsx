@@ -40,7 +40,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   title: {
-    ...theme.typography.textL,
+    ...theme.typography.textXL,
     flex: 1,
     textAlign: 'center',
     marginRight: 32,

@@ -62,7 +62,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   text: {
-    ...theme.typography.textL,
+    ...theme.typography.textXL,
     color: theme.color.brandTextOn,
   },
 }))

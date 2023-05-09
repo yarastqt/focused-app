@@ -18,9 +18,13 @@ export const darkTheme: Theme = {
   },
 
   typography: {
-    textL: {
+    textXL: {
       fontFamily: 'Rubik-Light',
       fontSize: 24,
+    },
+    textL: {
+      fontFamily: 'Rubik-Light',
+      fontSize: 18,
     },
     textM: {
       fontFamily: 'Rubik-Light',
