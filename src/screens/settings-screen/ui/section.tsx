@@ -39,5 +39,6 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     ...theme.typography.textL,
+    color: theme.color.textPrimary,
   },
 }))

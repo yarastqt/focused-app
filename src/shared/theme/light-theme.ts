@@ -1,4 +1,5 @@
-import { Theme } from './types'
+import type { Theme } from './types'
+import { typography } from './typography'
 
 export const lightTheme: Theme = {
   colorScheme: 'light',
@@ -17,20 +18,7 @@ export const lightTheme: Theme = {
     textSecondary: 'rgba(58, 52, 28, 0.5)',
   },
 
-  typography: {
-    textXL: {
-      fontFamily: 'Rubik-Light',
-      fontSize: 24,
-    },
-    textL: {
-      fontFamily: 'Rubik-Light',
-      fontSize: 18,
-    },
-    textM: {
-      fontFamily: 'Rubik-Regular',
-      fontSize: 16,
-    },
-  },
+  typography,
 
   shadow: {
     elevated50: {
