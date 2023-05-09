@@ -21,6 +21,10 @@ export type Theme = {
   }
 
   typography: {
+    textXL: {
+      fontFamily: string
+      fontSize: number
+    }
     textL: {
       fontFamily: string
       fontSize: number
