@@ -1,4 +1,5 @@
-import { Theme } from './types'
+import type { Theme } from './types'
+import { typography } from './typography'
 
 export const darkTheme: Theme = {
   colorScheme: 'dark',
@@ -11,26 +12,13 @@ export const darkTheme: Theme = {
     lineNormal: 'rgba(193, 199, 200, 1)',
 
     surface0: 'rgba(20, 20, 25, 1)',
-    surfaceSubmerged: 'rgba(58, 52, 28, 0.2)',
+    surfaceSubmerged: 'rgba(255, 253, 250, 0.2)',
 
     textPrimary: 'rgba(255, 253, 250, 1)',
     textSecondary: 'rgba(255, 253, 250, 0.5)',
   },
 
-  typography: {
-    textXL: {
-      fontFamily: 'Rubik-Light',
-      fontSize: 24,
-    },
-    textL: {
-      fontFamily: 'Rubik-Light',
-      fontSize: 18,
-    },
-    textM: {
-      fontFamily: 'Rubik-Light',
-      fontSize: 16,
-    },
-  },
+  typography,
 
   shadow: {
     elevated50: {

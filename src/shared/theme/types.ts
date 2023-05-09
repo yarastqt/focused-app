@@ -3,39 +3,42 @@ import type { ShadowStyleIOS } from 'react-native'
 export type ColorSchemeVariant = 'light' | 'dark' | 'system'
 export type ColorSchemeValue = 'light' | 'dark'
 
+export interface Color {
+  brandBgBase: string
+  brandBgPressed: string
+  brandTextOn: string
+
+  lineNormal: string
+
+  surface0: string
+  surfaceSubmerged: string
+
+  textPrimary: string
+  textSecondary: string
+}
+
+export interface Typography {
+  textXL: {
+    fontFamily: string
+    fontSize: number
+  }
+  textL: {
+    fontFamily: string
+    fontSize: number
+  }
+  textM: {
+    fontFamily: string
+    fontSize: number
+  }
+}
+
+export interface Shadow {
+  elevated50: ShadowStyleIOS
+}
+
 export type Theme = {
   colorScheme: ColorSchemeValue
-
-  color: {
-    brandBgBase: string
-    brandBgPressed: string
-    brandTextOn: string
-
-    lineNormal: string
-
-    surface0: string
-    surfaceSubmerged: string
-
-    textPrimary: string
-    textSecondary: string
-  }
-
-  typography: {
-    textXL: {
-      fontFamily: string
-      fontSize: number
-    }
-    textL: {
-      fontFamily: string
-      fontSize: number
-    }
-    textM: {
-      fontFamily: string
-      fontSize: number
-    }
-  }
-
-  shadow: {
-    elevated50: ShadowStyleIOS
-  }
+  color: Color
+  typography: Typography
+  shadow: Shadow
 }
