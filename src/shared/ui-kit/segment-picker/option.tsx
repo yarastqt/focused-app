@@ -59,5 +59,6 @@ const useStyles = createStyles((theme) => ({
 
   text: {
     ...theme.typography.textM,
+    fontWeight: '400',
   },
 }))

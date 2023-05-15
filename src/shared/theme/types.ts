@@ -18,6 +18,10 @@ export interface Color {
 }
 
 export interface Typography {
+  displayL: {
+    fontFamily: string
+    fontSize: number
+  }
   textXL: {
     fontFamily: string
     fontSize: number
