@@ -9,7 +9,7 @@ export const darkTheme: Theme = {
     brandBgPressed: 'rgba(255, 253, 250, 0.9)',
     brandTextOn: 'rgba(20, 20, 25, 1)',
 
-    lineNormal: 'rgba(193, 199, 200, 1)',
+    lineNormal: 'rgba(193, 199, 200, 0.2)',
 
     surface0: 'rgba(20, 20, 25, 1)',
     surfaceSubmerged: 'rgba(255, 253, 250, 0.2)',
