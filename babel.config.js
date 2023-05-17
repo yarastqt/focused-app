@@ -19,7 +19,7 @@ function getAliases() {
 
   return Object.entries(paths).reduce((aliases, alias) => {
     const key = alias[0].replace('/*', '')
-    const value = path.resolve(baseUrl, alias[1][0].replace('*', ''))
+    const value = path.join(baseUrl, alias[1][0].replace('*', ''))
 
     return {
       ...aliases,
