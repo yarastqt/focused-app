@@ -9,13 +9,13 @@ export const lightTheme: Theme = {
     brandBgPressed: 'rgba(20, 20, 25, 0.9)',
     brandTextOn: 'rgba(255, 253, 250, 1)',
 
-    lineNormal: 'rgba(58, 52, 28, 0.2)',
+    lineNormal: 'rgba(20, 20, 25, 0.1)',
 
     surface0: 'rgba(255, 253, 250, 1)',
-    surfaceSubmerged: 'rgba(58, 52, 28, 0.1)',
+    surfaceSubmerged: 'rgba(20, 20, 25, 0.05)',
 
     textPrimary: 'rgba(20, 20, 25, 1)',
-    textSecondary: 'rgba(58, 52, 28, 0.5)',
+    textSecondary: 'rgba(20, 20, 25, 0.5)',
   },
 
   typography,
