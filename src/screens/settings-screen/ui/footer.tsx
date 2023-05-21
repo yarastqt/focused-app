@@ -9,6 +9,7 @@ import Animated, {
 
 import { createStyles } from '@app/shared/theme'
 
+import { displayName } from '../../../../app.json'
 import { version } from '../../../../package.json'
 
 export const Footer: FC = () => {
@@ -43,7 +44,9 @@ export const Footer: FC = () => {
 
   return (
     <Animated.View style={[styles.root, rootStyles]}>
-      <Text style={styles.version}>Stay Focused v{version}</Text>
+      <Text style={styles.version}>
+        {displayName} v{version}
+      </Text>
     </Animated.View>
   )
 }
