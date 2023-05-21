@@ -34,6 +34,10 @@ export interface Typography {
     fontFamily: string
     fontSize: number
   }
+  textS: {
+    fontFamily: string
+    fontSize: number
+  }
 }
 
 export interface Shadow {
