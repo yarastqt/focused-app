@@ -1,5 +1,11 @@
-import { FC } from 'react'
-import { Text, View } from 'react-native'
+import { FC, useEffect } from 'react'
+import { Text } from 'react-native'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withSpring,
+} from 'react-native-reanimated'
 
 import { createStyles } from '@app/shared/theme'
 
@@ -8,10 +14,37 @@ import { version } from '../../../../package.json'
 export const Footer: FC = () => {
   const styles = useStyles()
 
+  const transform = useSharedValue(100)
+  const opacity = useSharedValue(0)
+
+  const rootStyles = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+    transform: [{ translateY: transform.value }],
+  }))
+
+  useEffect(() => {
+    opacity.value = withDelay(
+      750,
+      withSpring(1, {
+        stiffness: 180,
+        damping: 25,
+        mass: 1,
+      }),
+    )
+    transform.value = withDelay(
+      750,
+      withSpring(0, {
+        stiffness: 180,
+        damping: 25,
+        mass: 1,
+      }),
+    )
+  }, [])
+
   return (
-    <View style={styles.root}>
+    <Animated.View style={[styles.root, rootStyles]}>
       <Text style={styles.version}>Stay Focused v{version}</Text>
-    </View>
+    </Animated.View>
   )
 }
 
