@@ -1,6 +1,6 @@
-import { createEffect, createEvent, createStore, sample } from 'effector'
+import { attach, createEffect, createEvent, createStore, sample } from 'effector'
 import { persist } from 'effector-storage/rn/async'
-import BackgroundTimer from 'react-native-background-timer'
+import BackgroundTimer, { IntervalId } from 'react-native-background-timer'
 import { match } from 'ts-pattern'
 
 interface TimerChangedPayload {
@@ -22,10 +22,14 @@ const ONE_MINUTE = 60000
 
 export const $$timer = (() => {
   const timerChanged = createEvent<TimerChangedPayload>()
-  const startPressed = createEvent()
+  const startFocusPressed = createEvent()
+  const startRestPressed = createEvent()
   const giveUpPressed = createEvent()
+  const skipRestPressed = createEvent()
 
   const timerUpdated = createEvent<number>()
+  const timerFinished = createEvent()
+  const timerRefSetted = createEvent<IntervalId>()
 
   const $state = createStore(State.INITIAL)
 
@@ -37,16 +41,28 @@ export const $$timer = (() => {
   })
 
   const $timer = createStore(0)
+  const $timerRef = createStore<IntervalId>(0)
 
   const startTimerFx = createEffect(() => {
-    BackgroundTimer.runBackgroundTimer(() => {
-      // TODO: Find better solution for run loop.
-      timerUpdated($timer.getState() - 1000)
+    const timerRef = BackgroundTimer.setInterval(() => {
+      const timerValue = $timer.getState()
+
+      if (timerValue > 0) {
+        // TODO: Find better solution for run loop.
+        timerUpdated(timerValue - 1000)
+      } else {
+        timerFinished()
+      }
     }, 1000)
+
+    timerRefSetted(timerRef)
   })
 
-  const stopTimerFx = createEffect(() => {
-    BackgroundTimer.stopBackgroundTimer()
+  const stopTimerFx = attach({
+    source: $timerRef,
+    effect: (timerRef) => {
+      BackgroundTimer.clearInterval(timerRef)
+    },
   })
 
   persist({ store: $timers, key: 'timers' })
@@ -59,6 +75,23 @@ export const $$timer = (() => {
       [payload.timer]: payload.value,
     }),
     target: $timers,
+  })
+
+  sample({
+    clock: timerFinished,
+    target: stopTimerFx,
+  })
+
+  sample({
+    clock: timerFinished,
+    source: $state,
+    fn: (state) =>
+      match(state)
+        .with(State.FOCUSED_RUN, () => State.FOCUSED_END)
+        .with(State.LONG_REST_RUN, () => State.LONG_REST_END)
+        .with(State.SHORT_REST_RUN, () => State.SHORT_REST_END)
+        .run(),
+    target: $state,
   })
 
   sample({
@@ -79,7 +112,12 @@ export const $$timer = (() => {
   })
 
   sample({
-    clock: startPressed,
+    clock: timerRefSetted,
+    target: $timerRef,
+  })
+
+  sample({
+    clock: startFocusPressed,
     fn: () => State.FOCUSED_RUN,
     target: [$state, startTimerFx],
   })
@@ -94,8 +132,10 @@ export const $$timer = (() => {
     $state,
     $timer,
     $timers,
-    timerChanged,
-    startPressed,
     giveUpPressed,
+    skipRestPressed,
+    startFocusPressed,
+    startRestPressed,
+    timerChanged,
   }
 })()
