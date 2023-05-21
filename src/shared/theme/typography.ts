@@ -17,4 +17,8 @@ export const typography: Typography = {
     fontFamily: 'Rubik-Light',
     fontSize: 16,
   },
+  textS: {
+    fontFamily: 'Rubik-Light',
+    fontSize: 13,
+  },
 }
