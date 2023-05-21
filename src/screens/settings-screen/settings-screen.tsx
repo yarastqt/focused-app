@@ -6,6 +6,7 @@ import { Clock, Light } from '@app/shared/icons'
 import { MainLayout } from '@app/shared/layouts/main-layout'
 import { ScreenHeader } from '@app/shared/ui-kit'
 
+import { Footer } from './ui/footer'
 import { Section } from './ui/section'
 import { SectionStack } from './ui/section-stack'
 
@@ -23,6 +24,8 @@ export const SettingsScreen: FC = () => {
           <ThemeSwitcher />
         </Section>
       </SectionStack>
+
+      <Footer />
     </MainLayout>
   )
 }
