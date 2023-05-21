@@ -12,10 +12,12 @@ import { $$timer, State } from '@app/entities/timer'
 import { ActionButton, SlideButton } from '@app/shared/ui-kit'
 
 export const Action: FC = () => {
-  const [state, onStartPress, onGiveUpPress] = useUnit([
+  const [state, onStartFocusPress, onGiveUpPress, onStartRestPress, onSkipRestPress] = useUnit([
     $$timer.$state,
-    $$timer.startPressed,
+    $$timer.startFocusPressed,
     $$timer.giveUpPressed,
+    $$timer.startFocusPressed,
+    $$timer.skipRestPressed,
   ])
 
   const transform = useSharedValue(100)
@@ -34,9 +36,18 @@ export const Action: FC = () => {
   return (
     <Animated.View style={rootStyles}>
       {match(state)
-        .with(State.INITIAL, () => <ActionButton onPress={onStartPress}>Start</ActionButton>)
+        .with(State.INITIAL, () => <ActionButton onPress={onStartFocusPress}>Start</ActionButton>)
         .with(State.FOCUSED_RUN, () => (
           <SlideButton onAction={onGiveUpPress}>Slide to give up</SlideButton>
+        ))
+        .with(State.FOCUSED_END, () => (
+          <ActionButton onPress={onStartRestPress}>Have a rest</ActionButton>
+        ))
+        .with(State.SHORT_REST_RUN, State.LONG_REST_RUN, () => (
+          <SlideButton onAction={onSkipRestPress}>Slide to skip</SlideButton>
+        ))
+        .with(State.SHORT_REST_END, State.SHORT_REST_END, () => (
+          <ActionButton onPress={onStartRestPress}>Stay focused</ActionButton>
         ))
         .run()}
     </Animated.View>
