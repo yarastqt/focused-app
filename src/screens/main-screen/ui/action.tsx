@@ -16,7 +16,7 @@ export const Action: FC = () => {
     $$timer.$state,
     $$timer.startFocusPressed,
     $$timer.giveUpPressed,
-    $$timer.startFocusPressed,
+    $$timer.startRestPressed,
     $$timer.skipRestPressed,
   ])
 
@@ -34,7 +34,11 @@ export const Action: FC = () => {
   }, [])
 
   return (
-    <Animated.View style={rootStyles}>
+    <Animated.View
+      // FIXME: Use state as key for reset button state.
+      key={state}
+      style={rootStyles}
+    >
       {match(state)
         .with(State.INITIAL, () => <ActionButton onPress={onStartFocusPress}>Start</ActionButton>)
         .with(State.FOCUSED_RUN, () => (
@@ -44,10 +48,10 @@ export const Action: FC = () => {
           <ActionButton onPress={onStartRestPress}>Have a rest</ActionButton>
         ))
         .with(State.SHORT_REST_RUN, State.LONG_REST_RUN, () => (
-          <SlideButton onAction={onSkipRestPress}>Slide to skip</SlideButton>
+          <SlideButton onAction={onSkipRestPress}>Slide to skip rest</SlideButton>
         ))
         .with(State.SHORT_REST_END, State.SHORT_REST_END, () => (
-          <ActionButton onPress={onStartRestPress}>Stay focused</ActionButton>
+          <ActionButton onPress={onStartFocusPress}>Stay focused</ActionButton>
         ))
         .run()}
     </Animated.View>

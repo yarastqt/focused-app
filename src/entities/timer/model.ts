@@ -123,6 +123,18 @@ export const $$timer = (() => {
   })
 
   sample({
+    clock: startRestPressed,
+    fn: () => State.SHORT_REST_RUN,
+    target: [$state, startTimerFx],
+  })
+
+  sample({
+    clock: skipRestPressed,
+    fn: () => State.FOCUSED_RUN,
+    target: [$state, stopTimerFx, startTimerFx],
+  })
+
+  sample({
     clock: giveUpPressed,
     fn: () => State.INITIAL,
     target: [$state, stopTimerFx],
