@@ -16,17 +16,15 @@ export const MainScreen: FC = () => {
   const state = useUnit($$timer.$state)
   const styles = useStyles()
 
+  const content = match(state)
+    .with(State.FOCUSED_RUN, State.SHORT_REST_RUN, State.LONG_REST_RUN, () => <DisplayTimer />)
+    .otherwise(() => <Preview />)
+
   return (
     <MainLayout>
       <View style={styles.root}>
         <Header />
-
-        {match(state)
-          .with(State.INITIAL, () => <Preview />)
-          .otherwise(() => (
-            <DisplayTimer />
-          ))}
-
+        {content}
         <Action />
       </View>
     </MainLayout>
