@@ -16,6 +16,8 @@ export const lightTheme: Theme = {
 
     textPrimary: 'rgba(20, 20, 25, 1)',
     textSecondary: 'rgba(20, 20, 25, 0.5)',
+
+    transparent: 'transparent',
   },
 
   typography,
