@@ -1,4 +1,4 @@
-import { attach, createEffect, createEvent, createStore, restore, sample } from 'effector'
+import { attach, createEffect, createEvent, restore, sample } from 'effector'
 import { persist } from 'effector-storage/rn/async'
 import { Appearance, NativeEventSubscription } from 'react-native'
 
