@@ -149,5 +149,6 @@ export const $$timer = (() => {
     startFocusPressed,
     startRestPressed,
     timerChanged,
+    timerFinished,
   }
 })()
