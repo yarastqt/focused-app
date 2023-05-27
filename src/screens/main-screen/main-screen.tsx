@@ -7,6 +7,7 @@ import { $$timer, State } from '@app/entities/timer'
 import { MainLayout } from '@app/shared/layouts/main-layout'
 import { createStyles } from '@app/shared/theme'
 
+import './model'
 import { Action } from './ui/action'
 import { DisplayTimer } from './ui/display-timer'
 import { Header } from './ui/header'
