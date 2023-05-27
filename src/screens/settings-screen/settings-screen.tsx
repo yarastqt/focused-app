@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
+import { RemindSettings } from '@app/features/remind-settings'
 import { ThemeSwitcher } from '@app/features/theme-switcher'
 import { TimerSettings } from '@app/features/timer-settings'
-import { Clock, Light } from '@app/shared/icons'
+import { Bolt, Clock, Light } from '@app/shared/icons'
 import { MainLayout } from '@app/shared/layouts/main-layout'
 import { ScreenHeader } from '@app/shared/ui-kit'
 
@@ -18,6 +19,10 @@ export const SettingsScreen: FC = () => {
       <SectionStack>
         <Section icon={<Clock />} title="Timers">
           <TimerSettings />
+        </Section>
+
+        <Section icon={<Bolt />} title="Reminds">
+          <RemindSettings />
         </Section>
 
         <Section icon={<Light />} title="Appearance">
