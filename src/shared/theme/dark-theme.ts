@@ -16,6 +16,8 @@ export const darkTheme: Theme = {
 
     textPrimary: 'rgba(255, 253, 250, 1)',
     textSecondary: 'rgba(255, 253, 250, 0.5)',
+
+    transparent: 'transparent',
   },
 
   typography,

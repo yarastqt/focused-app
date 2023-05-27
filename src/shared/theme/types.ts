@@ -15,6 +15,8 @@ export interface Color {
 
   textPrimary: string
   textSecondary: string
+
+  transparent: string
 }
 
 export interface Typography {
