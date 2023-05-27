@@ -1,5 +1,6 @@
 export * from './arrow-left'
 export * from './arrow-right'
+export * from './bolt'
 export * from './clock'
 export * from './cup'
 export * from './light'
