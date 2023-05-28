@@ -1,6 +1,7 @@
 import { FC, ReactNode, useCallback, useState } from 'react'
 import { LayoutChangeEvent, View } from 'react-native'
 import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler'
+import { trigger } from 'react-native-haptic-feedback'
 import Animated, {
   interpolate,
   interpolateColor,
@@ -36,6 +37,11 @@ export const SlideButton: FC<SlideButtonProps> = (props) => {
   const pressed = useSharedValue(0)
   const position = useSharedValue(0)
   const progress = useSharedValue(0)
+
+  const onActionHandler = useCallback(() => {
+    trigger('impactLight')
+    onAction()
+  }, [onAction])
 
   const onRootLayoutHandler = useCallback((event: LayoutChangeEvent) => {
     setRootWidth(event.nativeEvent.layout.width)
@@ -79,7 +85,7 @@ export const SlideButton: FC<SlideButtonProps> = (props) => {
       },
       onFinish: (_, context) => {
         if (context.isFinished) {
-          runOnJS(onAction)()
+          runOnJS(onActionHandler)()
         } else {
           pressed.value = withSpring(0)
         }
