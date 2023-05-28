@@ -1,5 +1,6 @@
 import { FC, ReactNode, useCallback } from 'react'
 import { Pressable, Text } from 'react-native'
+import { trigger } from 'react-native-haptic-feedback'
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -42,8 +43,13 @@ export const ActionButton: FC<ActionButtonProps> = (props) => {
     ),
   }))
 
+  const onPressHandler = useCallback(() => {
+    trigger('impactLight')
+    onPress()
+  }, [onPress])
+
   return (
-    <Pressable onPress={onPress} onPressIn={onPressIn} onPressOut={onPressOut}>
+    <Pressable onPress={onPressHandler} onPressIn={onPressIn} onPressOut={onPressOut}>
       <Animated.View style={[styles.root, rootStyles]}>
         <Text style={styles.text}>{children}</Text>
       </Animated.View>
